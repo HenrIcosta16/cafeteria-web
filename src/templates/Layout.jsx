@@ -5,13 +5,15 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <Container>
+    <>
       <Header></Header>
-      <main>
-        <Outlet></Outlet>
-      </main>
+      <Container>
+        <main>
+          <Outlet></Outlet>
+        </main>
+      </Container>
       <Footer></Footer>
-    </Container>
+    </>
   );
 };
 

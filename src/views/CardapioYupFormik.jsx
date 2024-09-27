@@ -1,71 +1,73 @@
-import { useState } from 'react';
-import produtosDataSet from '../datasets/Produto';
+import { useEffect, useState } from 'react';
 import ComprasTable from '../components/ComprasTable';
-import { Alert, Button, Form, Modal } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 
-const Cardapio = () => {
-  let [produtos, setProdutos] = useState([...produtosDataSet]);
+const CardapioYupFormik = () => {
+  const schema = Yup.object().shape({
+    titulo: Yup.string().trim().min(1).max(10).required(),
+    descricao: Yup.string().trim().min(1).max(20).required(),
+  });
+
+  let [produtos, setProdutos] = useState([]);
 
   const [show, setShow] = useState(false);
 
-  const [errorsForm, setErrorsForm] = useState({});
-
   const handleShow = () => setShow(!show);
 
-  let [formData, setFormData] = useState({
+  let formData = {
     titulo: '',
     descricao: '',
     valor: '',
     imagemUrl: '',
+  };
+
+  useEffect(() => {
+    console.log('Carregando produtos!');
+    fetch('http://localhost:3000/produtos', { method: 'GET' })
+      .then((res) => {
+        res.json().then((data) => {
+          setProdutos([...data]);
+        });
+      })
+      .catch((error) => {});
+  }, []);
+
+  useEffect(() => {
+    console.log('Modifiquei o produto!');
+  }, [produtos]);
+
+  const handleSubmit = (values) => {
+    // Enviar dados para a tabela.
+    let novoProduto = { ...values };
+
+    // Enviar os dados para o servidor de backend.
+    fetch('http://localhost:3000/produtos', {
+      method: 'POST',
+      body: JSON.stringify(novoProduto),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log('Cadastro efetuado com sucesso!');
+
+        setProdutos([...produtos, novoProduto]);
+
+        // Fechar modal.
+        setShow(false);
+      })
+      .catch((error) => {
+        console.log('Problemas a vista!');
+      });
+  };
+
+  const formik = useFormik({
+    initialValues: formData,
+    validationSchema: schema,
+    onSubmit: handleSubmit,
   });
-
-  const handleChangeFormData = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const validateValues = () => {
-    let errors = {};
-    if (formData.titulo === null) {
-      errors.titulo = 'Título não válido';
-    } else if (
-      formData.titulo.trim().length < 1 ||
-      formData.titulo.trim().length > 10
-    ) {
-      errors.titulo = 'Título não válido';
-    }
-
-    if (formData.descricao === null) {
-      errors.descricao = 'Descrição inválida';
-    } else if (
-      formData.descricao.trim().length < 1 ||
-      formData.descricao.trim().length > 20
-    ) {
-      errors.descricao = 'Descrição inválida';
-    }
-
-    return errors;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validar os dados.
-    const errors = validateValues();
-    setErrorsForm(errors);
-
-    let qtdErrors = Object.keys(errors).length;
-
-    if (qtdErrors === 0) {
-      // Enviar dados para a tabela.
-      let novoProduto = { ...formData };
-      setProdutos([...produtos, novoProduto]);
-
-      // Fechar modal.
-      setShow(false);
-    }
-  };
 
   return (
     <>
@@ -79,39 +81,39 @@ const Cardapio = () => {
         <Modal.Header closeButton>
           <Modal.Title>Produto</Modal.Title>
         </Modal.Header>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={formik.handleSubmit}>
           <Modal.Body>
             {/* Título */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Título</Form.Label>
               <Form.Control
-                onChange={handleChangeFormData}
-                value={formData.titulo}
+                onChange={formik.handleChange}
+                value={formik.values.titulo}
                 type="text"
                 placeholder="Digite o título"
                 name="titulo"
               />
 
-              {errorsForm && errorsForm.titulo}
+              <span>{formik.errors.titulo}</span>
             </Form.Group>
             {/* Decrição */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Descrição</Form.Label>
               <Form.Control
-                onChange={handleChangeFormData}
-                value={formData.descricao}
+                onChange={formik.handleChange}
+                value={formik.values.descricao}
                 type="text"
                 placeholder="Digite a descrição"
                 name="descricao"
               />
-              {errorsForm && errorsForm.descricao}
+              <span>{formik.errors.descricao}</span>
             </Form.Group>
             {/* Valor */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Valor</Form.Label>
               <Form.Control
-                onChange={handleChangeFormData}
-                value={formData.valor}
+                onChange={formik.handleChange}
+                value={formik.values.valor}
                 type="text"
                 placeholder="Digite o valor"
                 name="valor"
@@ -121,8 +123,8 @@ const Cardapio = () => {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Imagem</Form.Label>
               <Form.Control
-                onChange={handleChangeFormData}
-                value={formData.imagemUrl}
+                onChange={formik.handleChange}
+                value={formik.values.imagemUrl}
                 type="text"
                 placeholder="Digite o endereço da imagem."
                 name="imagemUrl"
@@ -143,4 +145,4 @@ const Cardapio = () => {
   );
 };
 
-export default Cardapio;
+export default CardapioYupFormik;

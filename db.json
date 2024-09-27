@@ -1,0 +1,125 @@
+{
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "João",
+      "email": "joao@gmail.com",
+      "nascimento": "1990-01-01",
+      "cep": "12345-678"
+    },
+    {
+      "id": "2",
+      "nome": "Maria",
+      "email": "maria@gmail.com",
+      "nascimento": "1985-05-15",
+      "cep": "98765-432"
+    },
+    {
+      "id": "3",
+      "nome": "Carlos",
+      "email": "carlosto.183@gmail.com",
+      "nascimento": "1992-10-10",
+      "cep": "45678-123"
+    },
+    {
+      "id": "4",
+      "nome": "Ana",
+      "email": "ana.banana21@gmail.com",
+      "nascimento": "1995-07-20",
+      "cep": "67890-234"
+    },
+    {
+      "id": "5",
+      "nome": "Paulo",
+      "email": "paulofreire.wx@gmail.com",
+      "nascimento": "1988-11-30",
+      "cep": "54321-987"
+    },
+    {
+      "id": "6",
+      "nome": "Fernanda",
+      "email": "fernanda4xy3@gmail.com",
+      "nascimento": "1993-03-25",
+      "cep": "23456-789"
+    },
+    {
+      "id": "7",
+      "nome": "Roberto",
+      "email": "roberto123@gmail.com",
+      "nascimento": "1982-02-05",
+      "cep": "32123-456"
+    },
+    {
+      "id": "8",
+      "nome": "Juliana",
+      "email": "juliana19@gmail.com",
+      "nascimento": "1991-09-09",
+      "cep": "65432-987"
+    },
+    {
+      "id": "cd87",
+      "nome": "fdffdfd",
+      "email": "josefa@gmail.com",
+      "nascimento": "0009-06-16",
+      "cep": "58200-000"
+    },
+    {
+      "id": "b690",
+      "nome": "oiller peixoto",
+      "email": "oillerjoao1@gmail.com",
+      "nascimento": "2001-01-09",
+      "cep": "58200-000"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "1",
+      "imagemUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1381&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "titulo": "Pizza",
+      "descrição": "A melhor da casa,feita com frango e queijo.",
+      "valor": "R$ 20,00"
+    },
+    {
+      "id": "2",
+      "imagemUrl": "https://cdn.pixabay.com/photo/2022/05/12/17/05/hamburger-7191898_1280.jpg",
+      "titulo": "Hambúrguer",
+      "descrição": "De uma mordida na felicidade feita de carne ",
+      "valor": "R$ 12,00"
+    },
+    {
+      "id": "3",
+      "titulo": "Açai de tigela",
+      "descrição": " 100% Natural da fruta,impossivel não viciar.",
+      "valor": "R$ 8,00",
+      "imagemUrl": "https://i.pinimg.com/236x/18/ca/19/18ca196a66e5a1fb24979ae0dfb548b7.jpg"
+    },
+    {
+      "id": "4",
+      "titulo": "Hot dog",
+      "descricao": "o melhor da regiao",
+      "valor": "R$ 20",
+      "imagemUrl": "https://www.google.com/imgres?q=cachorro%20quente&imgurl=https%3A%2F%2Ffortsupermercados.com.br%2Fwp-content%2Fuploads%2F2023%2F11%2Fgrilled-beef-hot-dog-with-ketchup-snack-generative-ai-scaled.jpg&imgrefurl=https%3A%2F%2Ffortsupermercados.com.br%2F2023%2F10%2F31%2Fquatro-dicas-criativas-cachorro-quente%2F&docid=oXV_Vz7iRJ2lXM&tbnid=5zaG6XJV-wrpgM&vet=12ahUKEwjf5of1zuOIAxWWqZUCHSQgHQIQM3oECGUQAA..i&w=2560&h=1707&hcb=2&ved=2ahUKEwjf5of1zuOIAxWWqZUCHSQgHQIQM3oECGUQAA"
+    },
+    {
+      "id": "f55a",
+      "titulo": "dvdd",
+      "descricao": "dvddvdv",
+      "valor": "20",
+      "imagemUrl": "fgfgfgffgg"
+    },
+    {
+      "id": "28d5",
+      "titulo": "bolo",
+      "descricao": "feito 100% de milho ",
+      "valor": "20",
+      "imagemUrl": "https://cdn.pixabay.com/photo/2017/03/27/14/20/cupcakes-2179039_1280.jpg"
+    },
+    {
+      "id": "b53a",
+      "titulo": "coxinha",
+      "descricao": "ggfgfg",
+      "valor": "R$ 9,00",
+      "imagemUrl": "https://images.unsplash.com/photo-1476887334197-56adbf254e1a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+}

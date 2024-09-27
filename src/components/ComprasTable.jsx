@@ -15,7 +15,7 @@ const ComprasTable = ({ produtos = [] }) => {
       <tbody>
         {produtos.map((produto, i) => {
           return (
-            <tr key={produto.id}>
+            <tr key={i}>
               <td>{produto.id}</td>
               <td>{produto.titulo}</td>
               <td>{produto.descricao}</td>

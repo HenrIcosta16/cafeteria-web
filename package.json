@@ -4,20 +4,26 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --port 5000",
-    "dev": "vite",
+    "start": "vite --port 5176",
+    "dev": "concurrently \"npm run start\" \"npm run server\"",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch db.json --port 3000",
+    "service": "json-server --watch db.json --port 3000"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "bootstrap": "^5.3.3",
+    "formik": "^2.4.6",
+    "json-server": "^1.0.0-beta.3",
     "mdb-react-ui-kit": "^8.0.0",
+    "minha-app-vite": "file:",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
